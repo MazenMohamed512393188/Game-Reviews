@@ -7,5 +7,3 @@ let ui = new Display();
 ui.setupEventListeners();
 
 ui.displayCategories("mmorpg");
-
-ui.loadingShow();
