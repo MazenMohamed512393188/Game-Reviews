@@ -22,6 +22,8 @@ export class Display {
 
     async displayCategories(category = "mmorpg") {
 
+        document.querySelector(".loading").classList.remove("d-none");
+
         const { Games } = await import('./games.js');
 
         const gamesInstance = new Games(category);
@@ -59,6 +61,8 @@ export class Display {
 
         document.getElementById("gameData").innerHTML = cartona;
 
+        document.querySelector(".loading").classList.add("d-none");
+
         this.attachCardClickEvents();
     }
 
@@ -84,8 +88,6 @@ export class Display {
 
             this.displayCategories("mmorpg");
 
-            this.loadingShow();
-
             this.closeDetails();
 
         });
@@ -93,8 +95,6 @@ export class Display {
         shooter.addEventListener("click", () => {
 
             this.displayCategories("shooter");
-
-            this.loadingShow();
 
             this.closeDetails();
 
@@ -104,8 +104,6 @@ export class Display {
 
             this.displayCategories("sailing");
 
-             this.loadingShow();
-
             this.closeDetails();
 
         });
@@ -113,8 +111,6 @@ export class Display {
         permadeath.addEventListener("click", () => {
 
             this.displayCategories("permadeath");
-
-            this.loadingShow();
 
             this.closeDetails();
 
@@ -124,8 +120,6 @@ export class Display {
 
             this.displayCategories("superhero");
 
-            this.loadingShow();
-
             this.closeDetails();
 
         });
@@ -133,8 +127,6 @@ export class Display {
         pixel.addEventListener("click", () => {
 
             this.displayCategories("pixel");
-
-            this.loadingShow();
 
             this.closeDetails();
 
@@ -150,6 +142,8 @@ export class Display {
     }
 
     async displayDetails(id) {
+
+        document.querySelector(".loading").classList.remove("d-none");
 
         const { Details } = await import('./details.js');
 
@@ -171,6 +165,8 @@ export class Display {
 
         document.getElementById("detailsContent").innerHTML = cartona;
 
+        document.querySelector(".loading").classList.add("d-none");
+
         document.querySelector(".games").classList.add("d-none");
 
         document.querySelector(".details").classList.remove("d-none");
@@ -185,14 +181,4 @@ export class Display {
 
     }
 
-    loadingShow() {
-
-        loading.classList.remove("d-none");
-
-        setTimeout(() => {
-
-            loading.classList.add("d-none");
-        }, 1000);
-
-    }
 }
